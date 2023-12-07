@@ -188,7 +188,7 @@ export async function handlePushEvent(req: Request, res: Response) {
         console.log(console.log(response.data));
       }
     }
-    res.sendStatus(200);
+    return res.status(200).json(pushEvent);
   } catch (error) {
     const message =
       error instanceof Error
