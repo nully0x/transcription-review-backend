@@ -169,6 +169,8 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
+  res.json(pushEvent);
+
   const commits = pushEvent.commits;
   if (!commits || !Array.isArray(commits)) {
     return res.status(500).send({
@@ -177,4 +179,5 @@ export async function handlePushEvent(req: Request, res: Response) {
   }
 
   console.log("commits", commits);
+  res.json(commits);
 }
