@@ -168,8 +168,8 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const ref = pushEvent.ref;
-  res.status(200).json(ref);
+  const payload = pushEvent.payload;
+  console.log(payload);
 
   // try {
   //   for (const commit of commits) {
