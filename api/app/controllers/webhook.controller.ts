@@ -168,8 +168,8 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const commits = pushEvent.push.commits;
-  res.status(200).json(commits);
+  const ref = pushEvent.ref;
+  res.status(200).json(ref);
 
   // try {
   //   for (const commit of commits) {
