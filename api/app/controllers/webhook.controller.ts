@@ -168,7 +168,7 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const payload = pushEvent.payload?.commits;
+  const payload = pushEvent.pushEvent?.commits;
   console.log(payload);
 
   // try {
