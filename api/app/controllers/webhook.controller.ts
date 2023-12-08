@@ -168,9 +168,11 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-
-  const payload = JSON.stringify(pushEvent.payload);
+// parse push event as JSON
+ const payload = JSON.parse(pushEvent.payload);
   console.log(payload);
+
+
 
   //   for (const commit of commits) {
   //     const changedFiles = [
