@@ -168,7 +168,7 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const commits = pushEvent.commits;
+  const commits = pushEvent.push?.commits;
   if (!commits || !Array.isArray(commits)) {
     return res.status(500).send({
       message: "No commits found in the push event data.",
@@ -178,6 +178,7 @@ export async function handlePushEvent(req: Request, res: Response) {
   try {
     for (const commit of commits) {
       const changedFiles = [
+        ...commit.added,
         ...commit.modified,
       ];
       for (const file of changedFiles) {
