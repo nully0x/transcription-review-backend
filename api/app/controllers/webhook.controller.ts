@@ -168,10 +168,8 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const payload = pushEvent.payload;
+  const payload = pushEvent.payload?.commits[0];
   console.log(payload);
-  const ref = payload.repository;
-  console.log(ref);
 
   // try {
   //   for (const commit of commits) {
