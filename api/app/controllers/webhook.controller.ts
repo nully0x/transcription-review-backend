@@ -178,14 +178,11 @@ export async function handlePushEvent(req: Request, res: Response) {
   try {
     for (const commit of commits) {
       const changedFiles = [
-        ...commit.added,
         ...commit.modified,
-        ...commit.removed,
       ];
       for (const file of changedFiles) {
         const rawUrl = `https://raw.githubusercontent.com/${pushEvent.repository.full_name}/${commit.id}/${file}`;
-        const response = await axios.get(rawUrl);
-        console.log(console.log(response.data));
+        console.log(rawUrl);
       }
     }
     return res.status(200).json(pushEvent);
