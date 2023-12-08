@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-// import axios from "axios";
+import axios from "axios";
 import { Review, Transaction, Wallet, Transcript, User } from "../db/models";
 import { sequelize } from "../db";
 import { TRANSACTION_STATUS, TRANSACTION_TYPE } from "../types/transaction";
@@ -190,7 +190,10 @@ export async function handlePushEvent(req: Request, res: Response) {
       ];
       for (const file of changedFiles) {
         const rawUrl = `https://raw.githubusercontent.com/${payload.repository.full_name}/${commit.id}/${file}`;
-        console.log(rawUrl);
+        //read the file with axios
+        const response = await axios.get(rawUrl);
+        console.log(response.data);
+        
       }
     }
     return res.status(200).json(pushEvent);
