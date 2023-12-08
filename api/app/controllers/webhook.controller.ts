@@ -169,7 +169,7 @@ export async function handlePushEvent(req: Request, res: Response) {
   }
 
   console.log(pushEvent);
-  console.log(pushEvent.repository.full_name);
+  console.log(pushEvent.payload.repository.id);
 
   // try {
   //   for (const commit of commits) {
