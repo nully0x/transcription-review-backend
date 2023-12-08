@@ -168,11 +168,15 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  console.log(pushEvent);
+   const commits = pushEvent.commits;
+  if (!commits || !Array.isArray(commits)) {
+    return res.status(500).send({
+      message: "No commits found in the push event data.",
+    });
+  }
 
-  const commits = pushEvent.commits;
-   res.status(200).json(commits);
   console.log(commits);
+  res.status(200).json(commits);
 
   // try {
   //   for (const commit of commits) {
