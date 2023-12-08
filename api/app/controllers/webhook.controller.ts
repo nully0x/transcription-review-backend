@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import axios from 'axios';
+import axios from "axios";
 import { Review, Transaction, Wallet, Transcript, User } from "../db/models";
 import { sequelize } from "../db";
 import { TRANSACTION_STATUS, TRANSACTION_TYPE } from "../types/transaction";
@@ -168,8 +168,8 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-   const commits = pushEvent.commits;
-  if (!commits || !Array.isArray(commits)) {
+  const commits = pushEvent.commits;
+  if (!commits) {
     return res.status(500).send({
       message: "No commits found in the push event data.",
     });
