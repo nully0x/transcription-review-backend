@@ -189,7 +189,7 @@ export async function handlePushEvent(req: Request, res: Response) {
         ...commit.modified,
       ];
       for (const file of changedFiles) {
-        const rawUrl = `https://raw.githubusercontent.com/${pushEvent.repository.full_name}/${commit.id}/${file}`;
+        const rawUrl = `https://raw.githubusercontent.com/${payload.repository.full_name}/${commit.id}/${file}`;
         console.log(rawUrl);
       }
     }
