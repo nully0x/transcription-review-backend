@@ -168,7 +168,7 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const payload = pushEvent.pushEvent?.repository;
+  const payload = JSON.stringify(pushEvent);
   console.log(payload);
 
   // try {
