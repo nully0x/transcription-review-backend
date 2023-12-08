@@ -169,11 +169,9 @@ export async function handlePushEvent(req: Request, res: Response) {
   }
 
 
-  const payload = JSON.stringify(pushEvent);
+  const payload = JSON.stringify(pushEvent.payload);
   console.log(payload);
-  const commits = pushEvent.commits;
-  console.log(commits);
-  // try {
+
   //   for (const commit of commits) {
   //     const changedFiles = [
   //       ...commit.added,
