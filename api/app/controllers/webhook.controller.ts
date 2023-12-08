@@ -171,12 +171,7 @@ export async function handlePushEvent(req: Request, res: Response) {
   console.log(pushEvent);
 
   const commits = pushEvent.commits;
-  if (!commits || !Array.isArray(commits)) {
-    return res.status(500).send({
-      message: "No commits found in the push event data.",
-    });
-  }
-
+  
   console.log(commits);
 
   // try {
