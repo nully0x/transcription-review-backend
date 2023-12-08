@@ -168,15 +168,7 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const commits = pushEvent.payload.head_commit?.modified;
-  if (!commits) {
-    return res.status(500).send({
-      message: "No commits found in the push event data.",
-    });
-  }
-
-  console.log(commits);
-  res.status(200).json(commits);
+  console.log(pushEvent);
 
   // try {
   //   for (const commit of commits) {
