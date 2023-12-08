@@ -168,30 +168,34 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
 
-  const commits = pushEvent.push?.commits;
+  console.log(pushEvent);
+
+  const commits = pushEvent.commits;
   if (!commits || !Array.isArray(commits)) {
     return res.status(500).send({
       message: "No commits found in the push event data.",
     });
   }
 
-  try {
-    for (const commit of commits) {
-      const changedFiles = [
-        ...commit.added,
-        ...commit.modified,
-      ];
-      for (const file of changedFiles) {
-        const rawUrl = `https://raw.githubusercontent.com/${pushEvent.repository.full_name}/${commit.id}/${file}`;
-        console.log(rawUrl);
-      }
-    }
-    return res.status(200).json(pushEvent);
-  } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : "Unable to save URLs in the database";
-    return res.status(500).send({ message });
-  }
+  console.log(commits);
+
+  // try {
+  //   for (const commit of commits) {
+  //     const changedFiles = [
+  //       ...commit.added,
+  //       ...commit.modified,
+  //     ];
+  //     for (const file of changedFiles) {
+  //       const rawUrl = `https://raw.githubusercontent.com/${pushEvent.repository.full_name}/${commit.id}/${file}`;
+  //       console.log(rawUrl);
+  //     }
+  //   }
+  //   return res.status(200).json(pushEvent);
+  // } catch (error) {
+  //   const message =
+  //     error instanceof Error
+  //       ? error.message
+  //       : "Unable to save URLs in the database";
+  //   return res.status(500).send({ message });
+  // }
 }
