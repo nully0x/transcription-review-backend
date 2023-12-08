@@ -168,7 +168,7 @@ export async function handlePushEvent(req: Request, res: Response) {
     });
   }
   // res.json(pushEvent);
-  res.json(pushEvent.commits);
+  res.json(pushEvent.payload.commits);
 
   // try {
   //   for (const commit of commits) {
