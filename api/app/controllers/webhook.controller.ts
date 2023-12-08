@@ -167,8 +167,9 @@ export async function handlePushEvent(req: Request, res: Response) {
       message: "No push event data found in the request body.",
     });
   }
-  // res.json(pushEvent);
-  res.json(JSON.stringify(pushEvent.repository));
+
+  const commits = pushEvent.commits;
+  res.status(200).json(commits);
 
   // try {
   //   for (const commit of commits) {
