@@ -170,7 +170,7 @@ export async function handlePushEvent(req: Request, res: Response) {
 
   const payload = pushEvent.payload;
   console.log(payload);
-  const ref = payload.ref;
+  const ref = payload.payload.ref;
   console.log(ref);
 
   // try {
