@@ -171,7 +171,7 @@ export async function handlePushEvent(req: Request, res: Response) {
   console.log(pushEvent);
 
   const commits = pushEvent.commits;
-  
+   res.status(200).json(commits);
   console.log(commits);
 
   // try {
